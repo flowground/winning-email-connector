@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "subject": {
+                    "description": "email subject",
+                    "type": "string"
+                },
+                "html": {
+                    "description": "html body",
+                    "type": "string"
+                },
+                "text": {
+                    "description": "plain text body",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "raw source",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

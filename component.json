@@ -1,0 +1,89 @@
+{
+    "title": "Winning Email",
+    "description": "The Winning Email API allows you to access our services from your applications. Contact us if you need help with anything, or require access to something we don't yet offer. The API overview is available <a href='/api/v1/docs' target='_blank'>here</a>.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/winning.email/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://winning.email/api/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "internalApiKey": {
+                "label": "key (internalApiKey)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "emailBooster": {
+            "main": "./lib/actions/emailBooster.js",
+            "title": "The Email Booster service will scan your email subjects and bodies (both HTML and plain text), and give you recommendations on what to change to improve your open and click-through rates.<br><br>",
+            "description": "With our API, you can access the same results available through the Winning Email website, but in a raw, JSON, format, that you can use however you wish in your application. Read more about Email Booster <a href='/email-booster/' target='_blank'>here</a>.<br><br><strong>Input Parameters</strong><br>If <strong>source</strong> provided, then all other inputs are ignored. Otherwise, <strong>subject</strong> AND one or both of <strong>html</strong> and <strong>text</strong> are required.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/emailBooster.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "rateLimitStatus": {
+            "main": "./lib/actions/rateLimitStatus.js",
+            "title": "Rate Limit Status of Services",
+            "description": "Check how many API queries you've used, and what your limit is.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/rateLimitStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "status": {
+            "main": "./lib/actions/status.js",
+            "title": "API Server Status",
+            "description": "Check the status of the Winning Email API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/status.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
